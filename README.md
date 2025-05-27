@@ -90,3 +90,8 @@ Este projeto tem como objetivo desenvolver uma aplicação JavaFX integrada ao M
 
 Este projeto segue boas práticas de desenvolvimento colaborativo. Contribuições são bem-vindas e podem ser feitas via Pull Requests no repositório oficial.
 
+---
+
+### Sobre o Desenvolvedor
+
+Este projeto foi desenvolvido por [Gustavo Pereira Brum](https://www.linkedin.com/in/gustavo-pereira-brum-42671b241/), estudante de Engenharia de Software, entusiasta de Java e apaixonado por desenvolvimento backend.  
