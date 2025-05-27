@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 	
+	// Atributo da cena principal como atributo
 	private static Scene mainScene;
 	
 	@Override
@@ -30,6 +31,7 @@ public class Main extends Application {
 		}
 	}
 
+	// metodo para a referencia da cena principal
 	public static Scene getMainScene() {
 		return mainScene;
 	}

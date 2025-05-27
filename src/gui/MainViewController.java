@@ -54,12 +54,13 @@ public class MainViewController implements Initializable{
 			
 			Scene mainScene = Main.getMainScene();
 			
+			// Pega o conteudo do scrollpane (fazendo casting) para fazer o casting novamente para VBox
 			VBox mainVBox =(VBox) ((ScrollPane) mainScene.getRoot()).getContent();
 			
 			Node mainMenu = mainVBox.getChildren().get(0);  // Primeiro filho (main menu)
-			mainVBox.getChildren().clear();
-			mainVBox.getChildren().add(mainMenu);
-			mainVBox.getChildren().addAll(newVBox.getChildren());
+			mainVBox.getChildren().clear();  // Limpa todo o mainMenu
+			mainVBox.getChildren().add(mainMenu);  // Adiciona o nodo do primeiro filho
+			mainVBox.getChildren().addAll(newVBox.getChildren());  // Adiciona todos os filhos da colecao do newVBox
 		} catch (IOException e) {
 			Alerts.showAlert("IO Exception", "Error Loading view", e.getMessage(), AlertType.ERROR);
 		}
