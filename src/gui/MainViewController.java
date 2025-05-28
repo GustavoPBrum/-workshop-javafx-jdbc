@@ -67,7 +67,7 @@ public class MainViewController implements Initializable{
 			mainVBox.getChildren().add(mainMenu);  // Adiciona o nodo do primeiro filho
 			mainVBox.getChildren().addAll(newVBox.getChildren());  // Adiciona todos os filhos da colecao do newVBox
 			
-			T controller = loader.getController();
+			T controller = loader.getController();  // Retorna o controlador passado na expressao lambda (no caso DepartmentLisController)
 			initializingAction.accept(controller);
 		} catch (IOException e) {
 			Alerts.showAlert("IO Exception", "Error Loading view", e.getMessage(), AlertType.ERROR);
