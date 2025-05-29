@@ -89,6 +89,7 @@ public class DepartmentListController implements Initializable{
 			
 			DepartmentFormController controller = loader.getController();  // Controller da instancia atual
 			controller.setDepartment(obj);   
+			controller.setDepartmentService(new DepartmentService());  // Injetamos o service
 			controller.updateFormData();  // Vai carregar os dados do department vazio nas caixas de texto txtId e txtName
 			
 			// Um palco na frente de outro

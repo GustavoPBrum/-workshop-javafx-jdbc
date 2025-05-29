@@ -13,4 +13,13 @@ public class DepartmentService {
 	public List<Department> findAll() {
 		return dao.findAll();  // Vai no banco de dados e busca os departamentos 
 	}
+	
+	public void saveOrUpdate(Department obj) {
+		if(obj.getId() == null) {  // Id nulo == novo obj
+			dao.insert(obj);
+		}
+		else {
+			dao.update(obj);
+		}
+	}
 }
