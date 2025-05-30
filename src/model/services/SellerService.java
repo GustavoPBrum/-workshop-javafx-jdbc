@@ -12,11 +12,11 @@ public class SellerService {
 	private SellerDao dao = DaoFactory.createSellerDao();
 	
 	public List<Seller> findAll() {
-		return dao.findAll();  // Vai no banco de dados e busca os vendedores
+		return dao.findAll();  
 	}
 	
 	public void saveOrUpdate(Seller obj) {
-		if(obj.getId() == null) {  // Id nulo == novo obj
+		if(obj.getId() == null) { 
 			dao.insert(obj);
 		}
 		else {

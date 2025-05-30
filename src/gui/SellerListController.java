@@ -65,14 +65,14 @@ public class SellerListController implements Initializable, DataChangeListener {
 	private ObservableList<Seller> obsList;
 
 	@FXML
-	public void onBtNewAction(ActionEvent event) { // Para ter uma referencia para o controller que recebeu o event
-		Stage parentStage = Utils.currentStage(event); // referencia para o stage atual
-		Seller obj = new Seller(); // Seller vazio
+	public void onBtNewAction(ActionEvent event) {
+		Stage parentStage = Utils.currentStage(event);
+		Seller obj = new Seller(); 
 		createDialogForm(obj, "/gui/SellerForm.fxml", parentStage);
 	}
 
 	public void setSellerService(SellerService service) {
-		this.service = service; // Injecao de dependencia com principio SOLID
+		this.service = service; 
 	}
 
 	@Override
@@ -96,7 +96,6 @@ public class SellerListController implements Initializable, DataChangeListener {
 		tableViewSeller.prefHeightProperty().bind(stage.heightProperty());
 	}
 
-	// Acessa o service, carrega os Sellere e jogar no obsList
 	public void updateTableView() {
 		if (service == null) {
 			throw new IllegalStateException("Service was null");
@@ -113,26 +112,22 @@ public class SellerListController implements Initializable, DataChangeListener {
 	private void createDialogForm(Seller obj, String absoluteName, Stage parentStage) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName));
-			Pane pane = loader.load(); // Carrega a view
+			Pane pane = loader.load(); 
 
-			SellerFormController controller = loader.getController(); // Controller da instancia atual
+			SellerFormController controller = loader.getController(); 
 			controller.setSeller(obj);
-			controller.setSellerService(new SellerService()); // Injetamos o service
+			controller.setSellerService(new SellerService()); 
 
-			// O proprio objeto se inscreve para receber o evento
 			controller.subscribeDataChanceLinstener(this);
 
-			controller.updateFormData(); // Vai carregar os dados do Seller vazio nas caixas de texto txtId e
-											// txtName
+			controller.updateFormData(); 
 
-			// Um palco na frente de outro
-			Stage dialogStage = new Stage(); // Novo Stage
+			Stage dialogStage = new Stage(); 
 			dialogStage.setTitle("Enter Seller data");
-			dialogStage.setScene(new Scene(pane)); // Nova scene
-			dialogStage.setResizable(false); // Se pode ser redimensionada
-			dialogStage.initOwner(parentStage); // Stage **pai** dessa janela
+			dialogStage.setScene(new Scene(pane));
+			dialogStage.setResizable(false); 
+			dialogStage.initOwner(parentStage);
 
-			// Enquanto a janela nao for fechada, nao pode acessar a janela anterior
 			dialogStage.initModality(Modality.WINDOW_MODAL);
 			dialogStage.showAndWait();
 		} catch (IOException e) {
@@ -158,8 +153,7 @@ public class SellerListController implements Initializable, DataChangeListener {
 					return;
 				}
 				setGraphic(button);
-				button.setOnAction( // Vai preencher os dados do departamento a ser atualizado com o *obj*
-						event -> createDialogForm(obj, "/gui/SellerForm.fxml", Utils.currentStage(event)));
+				button.setOnAction(event -> createDialogForm(obj, "/gui/SellerForm.fxml", Utils.currentStage(event)));
 			}
 		});
 	}
@@ -183,10 +177,8 @@ public class SellerListController implements Initializable, DataChangeListener {
 	}
 
 	private void removeEntity(Seller obj) {
-		// Resultado do showConfirmation eh um butao clicado
 		Optional<ButtonType> result = Alerts.showConfirmation("Confirmation", "Are you sure to delete?");
 		
-		// Optional carrega outro obj dentro dele, podendo estar presente ou nao (para saber usamos o *.get()*)
 		if(result.get() == ButtonType.OK) {
 			if(service == null) {
 				throw new IllegalStateException("Service was null");
