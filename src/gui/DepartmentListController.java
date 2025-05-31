@@ -110,8 +110,7 @@ public class DepartmentListController implements Initializable, DataChangeListen
 			// O proprio objeto se inscreve para receber o evento
 			controller.subscribeDataChanceLinstener(this);
 
-			controller.updateFormData(); // Vai carregar os dados do department vazio nas caixas de texto txtId e
-											// txtName
+			controller.updateFormData(); // Vai carregar os dados do department vazio nas caixas de texto txtId e txtName
 
 			// Um palco na frente de outro
 			Stage dialogStage = new Stage(); // Novo Stage
@@ -124,6 +123,7 @@ public class DepartmentListController implements Initializable, DataChangeListen
 			dialogStage.initModality(Modality.WINDOW_MODAL);
 			dialogStage.showAndWait();
 		} catch (IOException e) {
+			e.printStackTrace();
 			Alerts.showAlert("IO Exception", "Error loading view", e.getMessage(), AlertType.ERROR);
 		}
 	}
